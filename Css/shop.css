@@ -1,0 +1,113 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Calibri;
+}
+
+.content {
+    width: 97%;
+    margin: 1%;
+    margin-bottom: 20%;
+    padding: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+.categories {
+    flex: 20%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+.products {
+    flex: 60%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+.row {
+    width: 90%;
+    margin: 1%;
+    padding: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+.nameANDprice {
+    flex: 50%;
+    float: left;
+    margin: 1%;
+    padding: 2%;
+    font-size: 24px;
+}
+#addToCart {
+    float: right;
+}
+#sum {
+    float: right;
+}
+h3 {
+    margin-bottom: 2%
+}
+
+li {
+    font-size: 24px;
+    list-style-type: none;
+    display: inline;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+	text-decoration: none;
+    color: black;
+}
+a:hover {
+	text-decoration: none;
+    color: black;
+}
+a:active {
+	text-decoration: none;
+    color: black;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    margin: 1%;
+    padding: 1%;
+}
+
+.footer {
+    background-color: #000;
+    height: 70px;
+    padding: 25px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+@media(max-width: 700px) {
+    img {
+        width: 100%;
+        height: 100%;
+        margin: 1%;
+    }
+}
