@@ -46,7 +46,14 @@
 				$sql->execute();
 
 				if ($session['user_id'] != 0) {
-					
+					$sql = $conn->prepare("SELECT login FROM users WHERE id = :uid");
+					$sql->bindValue(':uid', $session['user_id'], PDO::PARAM_INT);
+					$sql->execute();
+
+					$row = $sql->fetchAll(PDO::FETCH_ASSOC);
+					$this->user = new user;
+					$this->user->setLogin($row[0]['login']);
+					$this->user->setId($session['user_id']);
 				}
 				else{
 					$this->user = new user(true);
@@ -79,10 +86,29 @@
 
 		function updateSession(user $user){
 			global $conn, $request;
+
+			$newId = random_session_id();
+			$newSalt = random_salt(10);
+			setcookie(SESSION_COOKIE, $newId, time() + SESSION_COOKIE_EXPIRE);
+
+			$sql = $conn->prepare("UPDATE sessions SET salt_token = :salt, updated_at = :time, session_id = :newId, user_id = :uid WHERE session_id = :sid");
+			$sql->bindValue(':salt', $newSalt, PDO::PARAM_STR);
+			$sql->bindValue(':time', time(), PDO::PARAM_INT);
+			$sql->bindValue(':newId', $newId, PDO::PARAM_STR);
+			$sql->bindValue(':uid', $user->getId(), PDO::PARAM_INT);
+			$sql->bindValue(':sid', $this->id, PDO::PARAM_STR);
+			$sql->execute();
+
+			$this->id = $newId;
+			$this->user = $user;
 		}
 
 		public function getSessionId(){
 			return $this->id;
+		}
+
+		public function getUser(){
+			return $this->user;
 		}
 	}
 
