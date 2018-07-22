@@ -5,21 +5,28 @@
 	define('SESSION_COOKIE_EXPIRE', 3600);
 
 	function showMenu(){
-		global $conn;
+		global $conn, $session;
 		$sql = $conn->prepare("SELECT * FROM categories");
 		$sql -> execute();
 
 		echo "<div class='categories'>";
-		echo "<li><a href='showcart.php'>Cart</a><br></li>";
-		echo "<li><a href='index.php'>Main site</a><br></li>";
+		echo "<ul class=''>";
+		echo "<li><a href='admin.php'>Log in</a></li>";
+		if (!$session->getUser()->isAnonymous()) {
+			echo "<li><a href='logout.php'>Logout</a></li>";
+		}
+		echo "<li><a href='showcart.php'>Cart</a></li>";
+		echo "<li><a href='index.php'>Main site</a></li>";
 
 		while ($row = $sql -> fetch(PDO::FETCH_ASSOC)) {
 			$name = $row['name'];
 			$id = $row['id'];
 			
-			echo "<li><a href='index.php?cat_id=$id'>$name</a></li><br>";
+			echo "<li><a href='index.php?cat_id=$id'>$name</a></li>";
 
 		}
+		
+		echo "</ul>";
 		echo "</div>";
 	}
 
