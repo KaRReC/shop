@@ -44,20 +44,28 @@
 		public function checkPasswords($login, $password){
 			global $conn, $request;
 
-			$sql = $conn->prepare("SELECT id,  login FROM users WHERE login = :login AND password = :password");
+			$sql = $conn->prepare("SELECT * FROM users WHERE login = :login");
 			$sql->bindValue(':login', $login, PDO::PARAM_STR);
-			$sql->bindValue(':password', $password, PDO::PARAM_STR);
 			$sql->execute();
+			$row = $sql->fetch(PDO::FETCH_ASSOC);
+			if ($row) {
+				if (password_verify($_POST['password'], $row['password'])) {
+					$newUser = new user;
+					$newUser->setId($row['id']);
+					$newUser->login = $row['login'];
 
-			if ($row = $sql->fetchAll(PDO::FETCH_ASSOC)) {
-				$newUser = new user;
-				$newUser->setId($row[0]['id']);
-				$newUser->login = $row[0]['login'];
-
-				return $newUser;
+					return $newUser;
+				}
+				else{
+					echo "<div class='orderForms'>";
+					echo "password invalid";
+					echo "</div>";
+				}
 			}
 			else{
-				return 0;
+				echo "<div class='orderForms'>";
+				echo "not such user";
+				echo "</div>";
 			}
 		}
 	}
