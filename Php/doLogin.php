@@ -16,15 +16,13 @@
 		}
 		else{
 			echo "<div class='orderForms'>";
-			echo "not such user";
+			echo "Try again";
 			echo "</div>";
 		}
-		
 	}
 
 	echo "</div></div>";
 
 	include('includes/footer.php');
-
 
 ?>
