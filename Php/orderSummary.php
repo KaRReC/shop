@@ -4,7 +4,7 @@
 	
 	echo "<div class='content'>";
 
-	showMenu();
+	showMenu2();
 
 	echo "<div class='products'>";
 	
