@@ -26,3 +26,12 @@
 </head>
 
 <body>
+	<div id="main">
+   		<span id="ham" onclick="openNav()">Menu  &#9776; &nbsp;</span>
+    	<div id="logCart"><?php showNavbar(); ?></div>
+	</div>
+	<div id="mySidenav" class="sidenav">
+    	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    	<div id="logCart2"><?php showNavbar(); ?></div>
+    	<a><?php showMenu();?></a>
+	</div>
