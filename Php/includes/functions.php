@@ -4,29 +4,47 @@
 	define('SESSION_ID_LENGHT', 40);
 	define('SESSION_COOKIE_EXPIRE', 3600);
 
+	function showNavbar(){
+		global $conn, $session;
+
+		echo "<span><a class='navbar' href='admin.php'>Log in</a></span>";
+		if (!$session->getUser()->isAnonymous()) {
+			echo "<span><a class='navbar' href='logout.php'>Logout</a></span>";
+		}
+
+		echo "<span><a class='navbar' href='showcart.php'><i class='fa fa-shopping-cart' style='font-size:30px;'></i> Cart</a></span>";
+	}
+
 	function showMenu(){
 		global $conn, $session;
 		$sql = $conn->prepare("SELECT * FROM categories");
 		$sql -> execute();
 
-		echo "<div class='categories'>";
-		echo "<ul class=''>";
-		echo "<li><a href='admin.php'>Log in</a></li>";
-		if (!$session->getUser()->isAnonymous()) {
-			echo "<li><a href='logout.php'>Logout</a></li>";
-		}
-		echo "<li><a href='showcart.php'>Cart</a></li>";
-		echo "<li><a href='index.php'>Main site</a></li>";
+		echo "<a href='index.php'>Main site</a>";
 
 		while ($row = $sql -> fetch(PDO::FETCH_ASSOC)) {
 			$name = $row['name'];
 			$id = $row['id'];
 			
-			echo "<li><a href='index.php?cat_id=$id'>$name</a></li>";
+			echo "<a href='index.php?cat_id=$id'>$name</a>";
+		}
+	}
 
+	function showMenu2(){
+		global $conn, $session;
+		$sql = $conn->prepare("SELECT * FROM categories");
+		$sql -> execute();
+
+		echo "<div class='categories'>";
+		echo "<a href='index.php'><p>Main site</p></a>";
+
+		while ($row = $sql -> fetch(PDO::FETCH_ASSOC)) {
+			$name = $row['name'];
+			$id = $row['id'];
+			
+			echo "<a href='index.php?cat_id=$id'><p>$name</p></a>";
 		}
 		
-		echo "</ul>";
 		echo "</div>";
 	}
 
