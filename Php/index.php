@@ -5,11 +5,14 @@
 	
 ?>
 
+
 <div class="content">
+
+
 	
 <?php
 
-	showMenu();
+	showMenu2();
 
 	echo "<div class='products'>";
 
