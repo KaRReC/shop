@@ -4,7 +4,7 @@
 	
 	echo "<div class='content'>";
 
-	showMenu();
+	showMenu2();
 
 	echo "<div class='products'>";
 	echo "<div class='orderForms'>";
@@ -21,9 +21,8 @@
 		}
 		else{
 			if($session->getUser()->isUser()){
-			echo "Wellcome,<br>";
-			echo "You are log as:<br><br>".$session->getUser()->getLogin();
-			echo "<br><br>";
+			echo "<h3>Wellcome,</h3>";
+			echo "<h4>You are log as:</h4><h3>".$session->getUser()->getLogin()."<h/3><br><br>";
 
 			echo "<a href='addProduct.php'><input type='submit' value='Add Product'></a>";
 			}
@@ -33,6 +32,5 @@
 	echo "</div></div></div>";
 
 	include('includes/footer.php');
-
 
 ?>
