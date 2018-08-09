@@ -57,15 +57,11 @@
 					return $newUser;
 				}
 				else{
-					echo "<div class='orderForms'>";
-					echo "password invalid";
-					echo "</div>";
+					echo "<h3>Password invalid</h3>";
 				}
 			}
 			else{
-				echo "<div class='orderForms'>";
-				echo "not such user";
-				echo "</div>";
+				echo "<h3>There is no such user</h3>";
 			}
 		}
 	}
