@@ -9,7 +9,6 @@ body {
 
 .content {
     width: 97%;
-    margin: 1%;
     margin-bottom: 20%;
     padding: 1%;
     display: flex;
@@ -17,18 +16,152 @@ body {
     clear: both;
 }
 
+.navbar {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    transition: 0.3s;
+}
+
+.navbar:hover {
+    color: #f1f1f1;
+}
+
+#main {
+    height: 50px;
+    background-color: black;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#ham {
+    font-size: 30px;
+    cursor: pointer;
+    float: left;
+    background-color: transparent;
+    color: #818181;
+    visibility: hidden;
+}
+
+#ham:hover {
+    color: #0066cc;
+}
+
+#logCart {
+    color: #111;
+    padding: 8px 8px 8px 8px;
+    font-size: 20px;
+    float: right;
+}
+
+#logCart2 {
+    display: none;
+}
+
 .categories {
     flex: 20%;
     float: left;
-    margin: 1%;
+    margin: 5% 1% 0% 1%;
     padding: 1%;
+}
+
+.categories p {
+    font-size: 1.2em;
+    color: white;
+    padding: 5%;
+    background-color: #668cff;
+    box-shadow: 5px 5px 5px 5px rgba(102, 140, 255, 0.3);
+    transition: 0.2s;
+}
+
+.categories p:active {
+    transform: translateY(4px);
+    box-shadow: 3px 3px 3px 3px rgba(0, 51, 204, 0.3);
+    transition: 0.2s;
+}
+
+.categories a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.categories a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.categories a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.categories a:active {
+    text-decoration: none;
+    color: black;
 }
 
 .products {
     flex: 60%;
     float: left;
-    margin: 1%;
+    margin: 5% 1% 0% 1%;
     padding: 1%;
+}
+
+.products a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.products a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.products a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.products a:active {
+    text-decoration: none;
+    color: black;
 }
 
 .row {
@@ -117,6 +250,8 @@ input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
     color: white;
+    font-size: 1.2em;
+    font-weight: bold;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -132,6 +267,8 @@ input[type=button] {
     width: 100%;
     background-color: #ff9900;
     color: white;
+    font-size: 1.2em;
+    font-weight: bold;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -176,26 +313,6 @@ li {
     /*display: inline;*/
 }
 
-a:link {
-    text-decoration: none;
-    color: black;
-}
-
-a:visited {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    text-decoration: none;
-    color: black;
-}
-
-a:active {
-    text-decoration: none;
-    color: black;
-}
-
 img {
     width: 100%;
     height: 100%;
@@ -217,5 +334,22 @@ img {
         width: 100%;
         height: 100%;
         margin: 1%;
+    }
+    .categories {
+        display: none;
+    }
+    #logCart {
+        display: none;
+    }
+    #logCart2 {
+        display: block;
+    }
+    .products {
+        float: left;
+        margin: 8% 7% 0% 7%;
+        padding: 7%;
+    }
+    #ham {
+        visibility: visible;
     }
 }
